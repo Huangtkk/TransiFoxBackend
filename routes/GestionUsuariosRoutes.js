@@ -10,11 +10,11 @@ module.exports = function (servicio) {
 
       try {
 
-         const { Email ,Contrasena } = req.body;
+         const { Email ,Clave } = req.body;
 
 
 
-         const Usuarios = await servicio.addUsuarios(Email ,Contrasena);
+         const Usuarios = await servicio.addUsuarios(Email ,Clave);
 
 
 

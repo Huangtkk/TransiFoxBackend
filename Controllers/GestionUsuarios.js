@@ -10,16 +10,16 @@ class ServicioUsuarios {
     
 
 
-    async addUsuarios(Email ,Cedula,Contrasena) {
+    async addUsuarios(Email ,Cedula,Clave) {
         try {
 
           
            
             const Disponible="SI";
 
-            const sql = "INSERT INTO Usuarios(Cedula,Email,Contrasena,Disponible) VALUES (?,?, ?,?)";
+            const sql = "INSERT INTO Usuarios(Cedula,Email,Clave,Disponible) VALUES (?,?, ?,?)";
     
-            await this.DB.Open(sql, [Email ,Cedula,Contrasena,Disponible]);
+            await this.DB.Open(sql, [Email ,Cedula,Clave,Disponible]);
     
             return 'Guardado Exitosamente';
         } catch (err) {
