@@ -37,8 +37,8 @@ class ServicioUsuarios {
             if (result && result.length > 0) {
                 
                 return result.map(propiedad => ({
-                    "Email": propiedad.email,
-                    "Clave": propiedad.contrasena,
+                    "Email": propiedad.Email,
+                    "Clave": propiedad.Clave,
 
                 }));
             } else {
