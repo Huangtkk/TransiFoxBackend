@@ -19,7 +19,7 @@ class ServicioUsuarios {
 
             const sql = "INSERT INTO Usuarios(Cedula,Email,Clave,Disponible) VALUES (?,?, ?,?)";
     
-            await this.DB.Open(sql, [Email ,Cedula,Clave,Disponible]);
+            await this.DB.Open(sql, [Cedula,Email,Clave,Disponible]);
     
             return 'Guardado Exitosamente';
         } catch (err) {
