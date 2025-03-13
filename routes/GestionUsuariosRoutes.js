@@ -95,10 +95,10 @@ module.exports = function (servicio) {
 
        
 
-         const { Cedula ,Contrasena } = req.body;
+         const { Cedula ,Clave } = req.body;
 
       
-         const UsuarioVerificar = await servicio.getUsuarioEspecifico(Cedula, Contrasena);
+         const UsuarioVerificar = await servicio.getUsuarioEspecifico(Cedula,Clave);
 
          res.status(200).json(UsuarioVerificar);
 

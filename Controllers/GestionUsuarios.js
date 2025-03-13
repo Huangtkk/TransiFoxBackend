@@ -52,16 +52,16 @@ class ServicioUsuarios {
         }
     }
     
-    async getUsuarioEspecifico(Cedula, Contrasena) {
+    async getUsuarioEspecifico(Cedula, Clave) {
         try {
-            const sql = "SELECT * FROM usuarios WHERE Cedula = ? and Contrasena = ?";
-            let result = await this.DB.Open(sql, [Cedula, Contrasena]);
+            const sql = "SELECT * FROM usuarios WHERE Cedula = ? and Clave = ?";
+            let result = await this.DB.Open(sql, [Cedula, Clave]);
     
             if (result && result.length > 0) {
                 return {
         
                     "Email": result[0].email,
-                    "Contrasena": result[0].clave,
+                    "Clave": result[0].clave,
           
                 };
             } else {
