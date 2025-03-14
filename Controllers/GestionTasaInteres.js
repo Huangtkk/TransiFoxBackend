@@ -1,7 +1,7 @@
-const obtenerFechaHoraDesdePython = require('../Global/dateService');
 
 
-class ServicioGastos {
+
+class ServicioTasaInteres {
 
     constructor(DB) {
         this.DB = DB;
@@ -9,7 +9,7 @@ class ServicioGastos {
 
 
     calcularInteresSimple(Monto, Capital, Tasa_Interes, Tiempo, Interes_Simple ) {
-        
+
         const formulas = {
             Monto: () => Capital * (1 + Tasa_Interes * Tiempo),
             Interes_Simple: () => Capital * Tasa_Interes * Tiempo,
@@ -59,4 +59,4 @@ class ServicioGastos {
 
 }
 
-module.exports = ServicioGastos;
+module.exports = ServicioTasaInteres;
