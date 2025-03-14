@@ -28,62 +28,9 @@ module.exports = function (servicio) {
    })
 
 
-   let totalRegistrosProcesados = 0; // Contador de registros procesados (puedes almacenarlo en una base de datos si deseas persistencia)
 
-   async function consumirApiYRegistrar() {
-      try {
-         const apiUrl = "http://191.88.249.172:8000/getAll"; // URL de la API externa
-         const response = await axios.get(apiUrl); // Realiza una solicitud GET a la API externa
-   
-         const listaVentas = response.data; // Suponemos que la API devuelve una lista
-   
-         if (!Array.isArray(listaVentas) || listaVentas.length === 0) {
-            console.log("No hay datos para registrar.");
-            return;
-         }
-   
-         // Tomar solo los registros que no han sido procesados
-         const ventasNuevas = listaVentas.slice(totalRegistrosProcesados);
-   
-         if (ventasNuevas.length === 0) {
-            console.log("No hay ventas nuevas para registrar.");
-            return;
-         }
-   
-         // Recorrer la lista de ventas nuevas y registrar cada una
-         for (const venta of ventasNuevas) {
-            const { value, description, deadline } = venta;
-   
-            // Validar que los datos sean correctos
-            if (!value || !description || !deadline) {
-               console.log("Registro omitido: faltan datos necesarios (Monto o Razon).", venta);
-               continue;
-            }
-   
-            // Registrar la venta
-            try {
-               const resultado = await servicio.addVentas(value, description, deadline, '12:17');
-               console.log("Venta registrada:", resultado);
-   
-               // Incrementar el contador de registros procesados
-               totalRegistrosProcesados++;
-   
-            } catch (error) {
-               console.error("Error al registrar venta:", venta, error.message);
-            }
-         }
-      } catch (error) {
-         console.error("Error al consumir la API externa:", error.message);
-      }
-   }
-   
-   // Configurar el intervalo de 15 segundos
-   setInterval(() => {
-      console.log("Consumiendo la API externa...");
-      consumirApiYRegistrar();
-   }, 15000); // 15000 milisegundos = 15 segundos
-   
 
+   
 
    // Ruta de prueba para verificar el funcionamiento
    router.get('/api/testAddVentas', async (req, res) => {
