@@ -10,12 +10,15 @@ module.exports = function (servicio) {
 
       try {
 
+       
+
          const { Monto,Capital,Tasa_Interes,Tiempo,Interes_Simple} = req.body;
 
+   
 
-         const OpInteresSimple= await servicio.CalcularInteresSimple(Monto,Capital,Tasa_Interes,Tiempo,Tasa_Interes,Interes_Simple);
+         const OpInteresSimple= servicio.CalcularInteresSimple(Monto,Capital,Tasa_Interes,Tiempo,Tasa_Interes,Interes_Simple);
 
-         
+       
 
          res.status(200).json(OpInteresSimple)
 

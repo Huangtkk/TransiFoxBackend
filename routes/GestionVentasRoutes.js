@@ -30,17 +30,6 @@ module.exports = function (servicio) {
 
 
 
-   
-
-   // Ruta de prueba para verificar el funcionamiento
-   router.get('/api/testAddVentas', async (req, res) => {
-      try {
-         await consumirApiYRegistrar();
-         res.status(200).json({ message: "Se consumió la API externa y se registraron los datos (si los había)." });
-      } catch (error) {
-         res.status(500).json({ message: "Error al realizar la operación", error: error.message });
-      }
-   });
   
    router.get('/api/getVentas', async (req, res) => {
 

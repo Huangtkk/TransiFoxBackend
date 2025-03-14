@@ -1,8 +1,54 @@
-class ServiciosCuentas {
+class ServiciosInteresCompuesto {
 
     constructor(DB) {
         this.DB = DB;
     }
+
+
+
+    CalcularInteresCompuesto(Monto_Compuesto,Capital,Tasa_Interes,Tiempo,Interes_Compuesto ) {
+
+
+        try{
+
+
+
+            const formulas = {
+                Monto_Compuesto: () => Capital * Math.pow((1 + Tasa_Interes), Tiempo),
+                Capital: () => Monto_Compuesto / Math.pow((1 + Tasa_Interes), Tiempo),
+                Tasa_Interes: () => Math.pow(Monto_Compuesto / Capital, 1 / Tiempo) - 1,
+                Tiempo: () => (Math.log10(Monto_Compuesto) - Math.log10(Capital)) / Math.log10(1 + Tasa_Interes),
+                Interes_Compuesto: () => Monto_Compuesto-Capital,
+    
+                //Tiempo: () => Interes_Simple / (Capital * Tasa_Interes)
+            };
+
+        console.log(Math.pow(Monto_Compuesto / Capital, 1 / Tiempo) - 1,)
+    
+        
+    
+            let valores = { Monto_Compuesto,Capital,Tasa_Interes,Tiempo,Interes_Compuesto };
+    
+           
+    
+            for (let key in formulas) {
+                if (valores[key] == null) {  // Verifica null o undefined
+                    valores[key] = formulas[key]();
+                }
+            }
+    
+            return valores;
+            
+        }catch(error){
+            console.log(error);
+        }
+
+
+      
+    
+      
+    }
+
 
 
     async addCuentas(Saldo, Ncuenta, Descripcion, FApertura) {
@@ -55,4 +101,4 @@ class ServiciosCuentas {
 
 }
 
-module.exports = ServiciosCuentas;
+module.exports = ServiciosInteresCompuesto;

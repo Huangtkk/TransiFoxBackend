@@ -17,7 +17,7 @@ app.use(cors());
 // Importancion de modulo
 const ControllerVentas = require('./Controllers/GestionVentas');
 const ControllerInteresSimple = require('./Controllers/GestionInteresSimple');
-const ControllerCuentas = require('./Controllers/GestionCuentas');
+const ControllerInteresCompuesto = require('./Controllers/GestionInteresCompuesto');
 const ControllerHistorico= require('./Controllers/GestionHistorico');
 const ControllerUsuarios= require('./Controllers/GestionUsuarios');
 const ControllerGeneral= require('./Controllers/GestionGeneral');
@@ -25,7 +25,7 @@ const ControllerGeneral= require('./Controllers/GestionGeneral');
 // Instancias de los modulos
 const ServicioVentasI = new ControllerVentas(DB);
 const servicioInteresSimpleI = new ControllerInteresSimple(DB);
-const servicioCuentasI = new ControllerCuentas(DB);
+const servicioInteresCompuestoI = new ControllerInteresCompuesto(DB);
 const servicioHistoricoI = new ControllerHistorico(DB);
 const servicioUsuariosI = new ControllerUsuarios(DB);
 const servicioGeneralI = new ControllerGeneral(DB);
@@ -35,7 +35,7 @@ const servicioGeneralI = new ControllerGeneral(DB);
 // Routes (API)
 const VentasRoutes = require('./routes/GestionVentasRoutes')(ServicioVentasI); // Se le pasa el servicio con su base
 const InteresSimpleRoutes = require('./routes/GestionInteresSimpleRoutes')(servicioInteresSimpleI);
-const CuentasRoutes = require('./routes/GestionCuentasRoutes')(servicioCuentasI);
+const InteresCompuestoRoutes = require('./routes/GestionInteresCompuestoRoutes')(servicioInteresCompuestoI);
 const HistoricoRoutes = require('./routes/GestionHistoricoRoutes')(servicioHistoricoI);
 const UsuariosRoutes = require('./routes/GestionUsuariosRoutes')(servicioUsuariosI);
 const GeneralRoutes = require('./routes/GestionGeneralRoutes')(servicioGeneralI);
@@ -55,7 +55,7 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 // ROUTES (Ejecucion)
 app.use(VentasRoutes);
 app.use(InteresSimpleRoutes);
-app.use(CuentasRoutes);
+app.use(InteresCompuestoRoutes);
 app.use(HistoricoRoutes);
 app.use(UsuariosRoutes);
 app.use(GeneralRoutes);

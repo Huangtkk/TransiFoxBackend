@@ -8,21 +8,26 @@ class ServicioInteresSimple {
     }
 
 
-    calcularInteresSimple(Monto, Capital, Tasa_Interes, Tiempo, Interes_Simple ) {
+    CalcularInteresSimple(Monto, Capital, Tasa_Interes, Tiempo, Interes_Simple ) {
+
 
         const formulas = {
             Monto: () => Capital * (1 + Tasa_Interes * Tiempo),
             Interes_Simple: () => Capital * Tasa_Interes * Tiempo,
             Capital: () => Interes_Simple / (Tasa_Interes * Tiempo),
             Tasa_Interes: () => Interes_Simple / (Capital * Tiempo),
-            Tiempo: () => Interes_Simple / (Capital * Tasa_Interes)
+            //Tiempo: () => Interes_Simple / (Capital * Tasa_Interes)
         };
-    
+
+        let valores = { Monto, Capital, Tasa_Interes, Tiempo, Interes_Simple };
+
         for (let key in formulas) {
-            if (eval(key) === undefined) eval(`${key} = formulas[key]()`);
+            if (valores[key] == null) {  // Verifica null o undefined
+                valores[key] = formulas[key]();
+            }
         }
     
-        return { Monto, Capital, Tasa_Interes, Tiempo, Interes_Simple };
+        return valores;
     }
 
    
