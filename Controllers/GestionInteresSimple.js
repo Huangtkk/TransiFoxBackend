@@ -1,7 +1,7 @@
 
 
 
-class ServicioTasaInteres {
+class ServicioInteresSimple {
 
     constructor(DB) {
         this.DB = DB;
@@ -59,4 +59,4 @@ class ServicioTasaInteres {
 
 }
 
-module.exports = ServicioTasaInteres;
+module.exports = ServicioInteresSimple;
