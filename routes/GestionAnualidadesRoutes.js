@@ -9,6 +9,43 @@ const router = express.Router();
 module.exports = function (servicio) {
 
 
+   router.post('/api/CalcularAnualidades', async (req, res) => {
+
+
+      try {
+
+
+       
+   
+       
+         
+         const {Monto_Fijo, Tasa_Anualidad, Periodos_Capitalizacion, Valor_Presente,Valor_Futuro} = req.body;
+   
+        
+         let tasaConvertida = Tasa_Anualidad;
+
+         if (Tasa_Anualidad!=null){
+   
+            
+         tasaConvertida = parseFloat(Tasa_Anualidad) / 100;
+   
+         }
+   
+   
+        
+         const OpAnualidad= servicio.CalcularAnualidad(Monto_Fijo, tasaConvertida, Periodos_Capitalizacion, Valor_Presente, Valor_Futuro);
+   
+       
+   
+         res.status(200).json(OpAnualidad)
+   
+      } catch (error) {
+   
+         res.status(404).json(error);
+   
+      }
+   
+   })
    
 
    router.get('/api/getGeneral', async (req, res) => {

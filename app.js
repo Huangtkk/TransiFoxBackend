@@ -20,7 +20,7 @@ const ControllerInteresSimple = require('./Controllers/GestionInteresSimple');
 const ControllerInteresCompuesto = require('./Controllers/GestionInteresCompuesto');
 const ControllerHistorico= require('./Controllers/GestionHistorico');
 const ControllerUsuarios= require('./Controllers/GestionUsuarios');
-const ControllerGeneral= require('./Controllers/GestionGeneral');
+const ControllerAnualidades= require('./Controllers/GestionAnualidades');
 
 // Instancias de los modulos
 const ServicioVentasI = new ControllerVentas(DB);
@@ -28,7 +28,7 @@ const servicioInteresSimpleI = new ControllerInteresSimple(DB);
 const servicioInteresCompuestoI = new ControllerInteresCompuesto(DB);
 const servicioHistoricoI = new ControllerHistorico(DB);
 const servicioUsuariosI = new ControllerUsuarios(DB);
-const servicioGeneralI = new ControllerGeneral(DB);
+const servicioAnualidadesI = new ControllerAnualidades(DB);
 
 
 
@@ -38,7 +38,7 @@ const InteresSimpleRoutes = require('./routes/GestionInteresSimpleRoutes')(servi
 const InteresCompuestoRoutes = require('./routes/GestionInteresCompuestoRoutes')(servicioInteresCompuestoI);
 const HistoricoRoutes = require('./routes/GestionHistoricoRoutes')(servicioHistoricoI);
 const UsuariosRoutes = require('./routes/GestionUsuariosRoutes')(servicioUsuariosI);
-const GeneralRoutes = require('./routes/GestionGeneralRoutes')(servicioGeneralI);
+const AnualidadesRoutes = require('./routes/GestionAnualidadesRoutes')(servicioAnualidadesI);
 
 // SETS
 
@@ -58,7 +58,7 @@ app.use(InteresSimpleRoutes);
 app.use(InteresCompuestoRoutes);
 app.use(HistoricoRoutes);
 app.use(UsuariosRoutes);
-app.use(GeneralRoutes);
+app.use(AnualidadesRoutes);
 
 
 
