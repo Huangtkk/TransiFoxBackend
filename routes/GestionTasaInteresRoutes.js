@@ -5,19 +5,19 @@ const router = express.Router();
 
 module.exports = function (servicio) {
 
-   router.post('/api/addGastos', async (req, res) => {
+   router.post('/api/CalcularOperacionesInteresSimple', async (req, res) => {
 
 
       try {
 
-         const { Monto,Categoria,Proveedor,Fecha,Hora} = req.body;
+         const { Monto,Capital,Tasa_Interes,Tiempo,Interes_Simple} = req.body;
 
 
-         const Gastos = await servicio.addGastos(Monto,Categoria,Proveedor,Fecha,Hora);
+         const OpInteresSimple= await servicio.CalcularInteresSimple(Monto,Capital,Tasa_Interes,Tiempo,Tasa_Interes,Interes_Simple);
 
          
 
-         res.status(200).json(Gastos)
+         res.status(200).json(OpInteresSimple)
 
       } catch (error) {
 

@@ -8,24 +8,24 @@ class ServicioGastos {
     }
 
 
-    async addGastos(Monto,Categoria,Proveedor,Fecha,Hora) {
-        try {
-
-           // const { fecha: Fecha, hora: Hora } = await obtenerFechaHoraDesdePython();
-          
-           
-            const Disponible="SI";
-
-            const sql = "INSERT INTO Gastos(Fecha,Hora,Monto,Categoria,Proveedor,Disponible) VALUES (?,?, ?, ?, ?,?)";
+    calcularInteresSimple(Monto, Capital, Tasa_Interes, Tiempo, Interes_Simple ) {
+        
+        const formulas = {
+            Monto: () => Capital * (1 + Tasa_Interes * Tiempo),
+            Interes_Simple: () => Capital * Tasa_Interes * Tiempo,
+            Capital: () => Interes_Simple / (Tasa_Interes * Tiempo),
+            Tasa_Interes: () => Interes_Simple / (Capital * Tiempo),
+            Tiempo: () => Interes_Simple / (Capital * Tasa_Interes)
+        };
     
-            await this.DB.Open(sql, [Fecha,Hora,Monto,Categoria,Proveedor,Disponible]);
-    
-            return 'Guardado Exitosamente';
-        } catch (err) {
-            console.error(err);
-            return 'Guardado errado';
+        for (let key in formulas) {
+            if (eval(key) === undefined) eval(`${key} = formulas[key]()`);
         }
+    
+        return { Monto, Capital, Tasa_Interes, Tiempo, Interes_Simple };
     }
+
+   
     
 
     async getGastos() {
