@@ -12,9 +12,9 @@ class ServicioInteresSimple {
 
 
         const formulas = {
-            Monto: () => Capital * (1 + Tasa_Interes * Tiempo),
-            Interes_Simple: () => Capital * Tasa_Interes * Tiempo,
-            Capital: () => Interes_Simple / (Tasa_Interes * Tiempo),
+            Monto: () => Capital * (1 + (Tasa_Interes/100) * Tiempo),
+            Interes_Simple: () => Capital * (Tasa_Interes/100) * Tiempo,
+            Capital: () => Interes_Simple / ((Tasa_Interes/100) * Tiempo),
             Tasa_Interes: () => Interes_Simple / (Capital * Tiempo),
             //Tiempo: () => Interes_Simple / (Capital * Tasa_Interes)
         };

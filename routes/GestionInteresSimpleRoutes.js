@@ -14,20 +14,10 @@ module.exports = function (servicio) {
 
          const { Monto,Capital,Tasa_Interes,Tiempo,Interes_Simple} = req.body;
 
-         let tasaConvertida = Tasa_Interes;
-
-         if (Tasa_Interes!=null){
-   
-            
-         tasaConvertida = parseFloat(Tasa_Interes) / 100;
-   
-         }
-
-
+         
 
    
-
-         const OpInteresSimple= servicio.CalcularInteresSimple(Monto,Capital,tasaConvertida,Tiempo,Interes_Simple);
+         const OpInteresSimple= servicio.CalcularInteresSimple(Monto,Capital,Tasa_Interes,Tiempo,Interes_Simple);
 
        
 

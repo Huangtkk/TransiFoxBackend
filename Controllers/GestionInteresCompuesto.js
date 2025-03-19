@@ -14,22 +14,18 @@ class ServiciosInteresCompuesto {
 
 
             const formulas = {
-                Monto_Compuesto: () => Capital * Math.pow((1 + Tasa_Interes), Tiempo),
-                Capital: () => Monto_Compuesto / Math.pow((1 + Tasa_Interes), Tiempo),
+                Monto_Compuesto: () => Capital * Math.pow((1 + (Tasa_Interes/100)), Tiempo),
+                Capital: () => Monto_Compuesto / Math.pow((1 + (Tasa_Interes/100)), Tiempo),
                 Tasa_Interes: () => Math.pow(Monto_Compuesto / Capital, 1 / Tiempo) - 1,
-                Tiempo: () => (Math.log10(Monto_Compuesto) - Math.log10(Capital)) / Math.log10(1 + Tasa_Interes),
+                Tiempo: () => (Math.log10(Monto_Compuesto) - Math.log10(Capital)) / Math.log10(1 + (Tasa_Interes/100)),
                 Interes_Compuesto: () => Monto_Compuesto-Capital,
     
                 //Tiempo: () => Interes_Simple / (Capital * Tasa_Interes)
             };
-
-        console.log(Math.pow(Monto_Compuesto / Capital, 1 / Tiempo) - 1,)
-    
-        
     
             let valores = { Monto_Compuesto,Capital,Tasa_Interes,Tiempo,Interes_Compuesto };
     
-           
+
     
             for (let key in formulas) {
                 if (valores[key] == null) {  // Verifica null o undefined
