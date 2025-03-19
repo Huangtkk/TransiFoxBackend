@@ -16,7 +16,7 @@ class ServicioInteresSimple {
             Interes_Simple: () => Capital * (Tasa_Interes/100) * Tiempo,
             Capital: () => Interes_Simple / ((Tasa_Interes/100) * Tiempo),
             Tasa_Interes: () => (Interes_Simple / (Capital * Tiempo))*100,
-            Tiempo: () => Interes_Simple / (Capital * Tasa_Interes)
+            Tiempo: () => Interes_Simple / (Capital * (Tasa_Interes/100))
         };
 
         let valores = { Monto, Capital, Tasa_Interes, Tiempo, Interes_Simple };
