@@ -10,8 +10,6 @@ class ServicioAnualidad {
     CalcularAnualidad(Monto_Fijo, Tasa_Anualidad, Periodos_Capitalizacion, Valor_Presente, Valor_Futuro) {
 
 
-        
-
         const formulas = {
             Valor_Presente: () => Monto_Fijo * ((1 - Math.pow(1 + Tasa_Anualidad, -Periodos_Capitalizacion)) / Tasa_Anualidad),
             Valor_Futuro: () => Monto_Fijo * ((Math.pow(1 + Tasa_Anualidad, Periodos_Capitalizacion) - 1) / Tasa_Anualidad)
@@ -64,6 +62,7 @@ class ServicioAnualidad {
                 
                 return [];
             }
+
         } catch (err) {
             
             console.error(err);

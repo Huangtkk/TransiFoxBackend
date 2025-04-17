@@ -11,8 +11,6 @@ class ServiciosInteresCompuesto {
 
         try{
 
-
-
             const formulas = {
                 Monto_Compuesto: () => Capital * Math.pow((1 + (Tasa_Interes/100)), Tiempo),
                 Capital: () => Monto_Compuesto / Math.pow((1 + (Tasa_Interes/100)), Tiempo),
@@ -38,11 +36,6 @@ class ServiciosInteresCompuesto {
         }catch(error){
             console.log(error);
         }
-
-
-      
-    
-      
     }
 
 
