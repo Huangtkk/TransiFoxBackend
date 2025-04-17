@@ -60,12 +60,12 @@ class ServicioUsuarios {
             if (result && result.length > 0) {
                 return {
         
-                    "Email": result[0].email,
+                    "Cedula": result[0].cedula,
                     "Clave": result[0].clave,
           
                 };
             } else {
-                return null; // No se encontraron registros
+                return null; 
             }
         } catch (err) {
             console.error(err);
