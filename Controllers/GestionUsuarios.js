@@ -58,14 +58,16 @@ class ServicioUsuarios {
             let result = await this.DB.Open(sql, [Cedula, Clave]);
     
             if (result && result.length > 0) {
-                return {
+
+
+                Correcto=true;
+                
+                return Correcto;
         
-                    "Cedula": result[0].cedula,
-                    "Clave": result[0].clave,
-          
-                };
+                    
+                
             } else {
-                return null; 
+                return false; 
             }
         } catch (err) {
             console.error(err);
