@@ -53,10 +53,10 @@ module.exports = function (servicio) {
 
       try {
 
-         const { Email, Clave } = req.body;
+         const { Cedula, Clave } = req.body;
 
          console.log(Clave);
-         const UsuarioVerificar = await servicio.VerificarCorreoExistente(Email, Clave);
+         const UsuarioVerificar = await servicio.getUsuarioEspecifico(Cedula, Clave);
 
          res.status(200).json(UsuarioVerificar);
 
