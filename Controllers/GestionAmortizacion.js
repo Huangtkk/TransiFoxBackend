@@ -62,7 +62,7 @@ class ServicioAmortizacion {
     
                 return tabla;
             },
-            M: () => {
+            M: () => {  //Americano
                 const tabla = [];
                 const interes = Monto * i;
                 let saldo = Monto;

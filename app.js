@@ -15,6 +15,7 @@ const app = express();
 app.use(cors());
 
 // Importancion de modulo
+const ControllerTir = require('./Controllers/GestionTir');
 const ControllerGradientes = require('./Controllers/GestionGradientes');
 const ControllerInteresSimple = require('./Controllers/GestionInteresSimple');
 const ControllerInteresCompuesto = require('./Controllers/GestionInteresCompuesto');
@@ -24,6 +25,7 @@ const ControllerAnualidades= require('./Controllers/GestionAnualidades');
 const ControllerCapitalizacion= require('./Controllers/GestionCapitalizacion');
 
 // Instancias de los modulos
+const ServicioTirI = new ControllerTir(DB);
 const ServicioGradientesI = new ControllerGradientes(DB);
 const servicioInteresSimpleI = new ControllerInteresSimple(DB);
 const servicioInteresCompuestoI = new ControllerInteresCompuesto(DB);
@@ -35,6 +37,7 @@ const servicioCapitalizacionI = new ControllerCapitalizacion(DB);
 
 
 // Routes (API)
+const TirRoutes = require('./routes/GestionTirRoutes')(ServicioTirI);
 const GradientesRoutes = require('./routes/GestionGradientesRoutes')(ServicioGradientesI); // Se le pasa el servicio con su base
 const InteresSimpleRoutes = require('./routes/GestionInteresSimpleRoutes')(servicioInteresSimpleI);
 const InteresCompuestoRoutes = require('./routes/GestionInteresCompuestoRoutes')(servicioInteresCompuestoI);
@@ -56,6 +59,8 @@ app.use(express.urlencoded({ extended: false })); // Para que entienda los datos
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
 // ROUTES (Ejecucion)
+
+app.use(TirRoutes);
 app.use(GradientesRoutes);
 app.use(InteresSimpleRoutes);
 app.use(InteresCompuestoRoutes);
