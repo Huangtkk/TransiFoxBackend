@@ -65,7 +65,7 @@ class ServicioUsuarios {
           
                 };
             } else {
-                return null; 
+                return {"Correcto":false}; 
             }
         } catch (err) {
             console.error(err);
