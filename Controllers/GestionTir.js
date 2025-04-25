@@ -71,10 +71,8 @@ class ServicioTir {
             }
         }
     
-        return {
-            tir: (tir * 100).toFixed(4) + "%",
-            tabla: tabla
-        };
+        return tabla
+     
     }
     
     
