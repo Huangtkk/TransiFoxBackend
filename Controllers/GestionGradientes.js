@@ -67,10 +67,10 @@ class ServicioGradientes {
 
     
             PagoBaseDesdeVP: () =>
-                ((ValorPresente * ((G/100) - i)) / (Math.pow(1 + (G/100), NumeroPeriodos) * Math.pow(1 + i, NumeroPeriodos))),
+                (ValorPresente * (i - (G/100))) / (1 - Math.pow((1 + (G/100)) / (1 + i), NumeroPeriodos)),
     
             PagoBaseDesdeVF: () =>
-                (ValorFuturo * (G - i)) / (Math.pow(1 + G, NumeroPeriodos) - Math.pow(1 + i, NumeroPeriodos)),
+                (ValorFuturo * ((TasaCrecimiento/100) - i)) / (Math.pow(1 + (TasaCrecimiento/100), NumeroPeriodos) * Math.pow(1 + i, NumeroPeriodos)),
     
             // Serie: selecciona automáticamente si calcula R desde VP o VF
             S: () => {        //Serie
