@@ -15,7 +15,7 @@ const app = express();
 app.use(cors());
 
 // Importancion de modulo
-const ControllerVentas = require('./Controllers/GestionVentas');
+const ControllerGradientes = require('./Controllers/GestionGradientes');
 const ControllerInteresSimple = require('./Controllers/GestionInteresSimple');
 const ControllerInteresCompuesto = require('./Controllers/GestionInteresCompuesto');
 const ControllerHistorico= require('./Controllers/GestionHistorico');
@@ -24,7 +24,7 @@ const ControllerAnualidades= require('./Controllers/GestionAnualidades');
 const ControllerCapitalizacion= require('./Controllers/GestionCapitalizacion');
 
 // Instancias de los modulos
-const ServicioVentasI = new ControllerVentas(DB);
+const ServicioGradientesI = new ControllerGradientes(DB);
 const servicioInteresSimpleI = new ControllerInteresSimple(DB);
 const servicioInteresCompuestoI = new ControllerInteresCompuesto(DB);
 const servicioHistoricoI = new ControllerHistorico(DB);
@@ -35,7 +35,7 @@ const servicioCapitalizacionI = new ControllerCapitalizacion(DB);
 
 
 // Routes (API)
-const VentasRoutes = require('./routes/GestionVentasRoutes')(ServicioVentasI); // Se le pasa el servicio con su base
+const GradientesRoutes = require('./routes/GestionGradientesRoutes')(ServicioGradientesI); // Se le pasa el servicio con su base
 const InteresSimpleRoutes = require('./routes/GestionInteresSimpleRoutes')(servicioInteresSimpleI);
 const InteresCompuestoRoutes = require('./routes/GestionInteresCompuestoRoutes')(servicioInteresCompuestoI);
 const HistoricoRoutes = require('./routes/GestionHistoricoRoutes')(servicioHistoricoI);
@@ -56,7 +56,7 @@ app.use(express.urlencoded({ extended: false })); // Para que entienda los datos
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
 // ROUTES (Ejecucion)
-app.use(VentasRoutes);
+app.use(GradientesRoutes);
 app.use(InteresSimpleRoutes);
 app.use(InteresCompuestoRoutes);
 app.use(HistoricoRoutes);

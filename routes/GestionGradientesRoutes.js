@@ -28,6 +28,30 @@ module.exports = function (servicio) {
    })
 
 
+   router.post('/api/CalcularGradienteAritMetico', async (req, res) => {
+
+
+      try {
+
+         const { ValorPresente, PagoBase, TasaInteres,NumeroPeriodos,TasaCrecimiento, ValorFuturo,Tipo} = req.body;
+
+
+
+         const Valor = await servicio.CalcularGradienteAritmetico(ValorPresente, PagoBase, TasaInteres,NumeroPeriodos,TasaCrecimiento, ValorFuturo,Tipo);
+
+
+
+         res.status(200).json(Valor)
+
+      } catch (error) {
+
+         res.status(404).json(error);
+
+      }
+
+   })
+
+
 
 
   
