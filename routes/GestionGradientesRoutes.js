@@ -53,6 +53,31 @@ module.exports = function (servicio) {
 
 
 
+   router.post('/api/CalcularGradienteGeometrico', async (req, res) => {
+
+
+      try {
+
+         const { ValorPresente, PagoBase, TasaInteres,NumeroPeriodos,TasaCrecimiento, ValorFuturo,Tipo} = req.body;
+
+
+
+         const Valor = await servicio.CalcularGradienteGeometrico(ValorPresente, PagoBase, TasaInteres,NumeroPeriodos,TasaCrecimiento, ValorFuturo,Tipo);
+
+
+
+         res.status(200).json(Valor)
+
+      } catch (error) {
+
+         res.status(404).json(error);
+
+      }
+
+   })
+
+
+
 
   
    router.get('/api/getVentas', async (req, res) => {
