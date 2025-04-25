@@ -15,11 +15,11 @@ class ServicioUsuarios {
 
           
            
-            const Disponible="SI";
+      
 
-            const sql = "INSERT INTO Usuarios(Cedula,Email,Clave,Disponible) VALUES (?,?, ?,?)";
+            const sql = "INSERT INTO Usuarios(Cedula,Email,Clave) VALUES (?,?, ?)";
     
-            await this.DB.Open(sql, [Cedula,Email,Clave,Disponible]);
+            await this.DB.Open(sql, [Cedula,Email,Clave]);
     
             return 'Guardado Exitosamente';
         } catch (err) {
