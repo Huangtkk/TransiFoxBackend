@@ -1,7 +1,7 @@
 const express = require("express");
 
 const router = express.Router();
-const { enviarMensaje } = require('../kafka/KafkaProducer');
+//const { enviarMensaje } = require('../kafka/KafkaProducer');
 
 
 module.exports = function (servicio) {
