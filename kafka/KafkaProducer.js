@@ -1,5 +1,5 @@
 // kafka/kafkaProducer.js
-const { Kafka } = require('kafkajs');
+/*const { Kafka } = require('kafkajs');
 
 const kafka = new Kafka({
   clientId: 'api-usuarios',
@@ -23,3 +23,4 @@ module.exports = {
   conectarProducer,
   enviarMensaje,
 };
+ */
