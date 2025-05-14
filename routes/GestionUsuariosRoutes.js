@@ -1,6 +1,7 @@
 const express = require("express");
 
 const router = express.Router();
+const { enviarMensaje } = require('../kafka/KafkaProducer');
 
 
 module.exports = function (servicio) {
@@ -15,7 +16,11 @@ module.exports = function (servicio) {
 
 
          const Usuarios = await servicio.addUsuarios(Email ,Cedula,Clave);
+     
 
+        //  const mensaje = { Email, Cedula, Clave, status:Usuarios};
+
+       //  await enviarMensaje('usuarios-registrados', mensaje);
 
 
          res.status(200).json(Usuarios)
@@ -57,6 +62,8 @@ module.exports = function (servicio) {
 
          console.log(Clave);
          const UsuarioVerificar = await servicio.getUsuarioEspecifico(Cedula, Clave);
+
+
 
          res.status(200).json(UsuarioVerificar);
 

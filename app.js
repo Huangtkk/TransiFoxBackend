@@ -10,7 +10,7 @@ require('dotenv').config(); // TOMA LA CONFIGURACION DE EL ARCHIVO .ENV
 
 // Se crea el servidor, el servidor es app
 const app = express();
-
+const { conectarProducer } = require('./kafka/KafkaProducer');
 // CORS
 app.use(cors());
 
@@ -68,6 +68,10 @@ app.use(AmortizacionRoutes);
 app.use(UsuariosRoutes);
 app.use(AnualidadesRoutes);
 app.use(CapitalizacionRoutes);
+
+(async () => {
+  await conectarProducer();
+})();
 
 
 

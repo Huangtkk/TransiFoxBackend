@@ -13,9 +13,7 @@ class ServicioUsuarios {
     async addUsuarios(Email ,Cedula,Clave) {
         try {
 
-          
-           
-      
+              
 
             const sql = "INSERT INTO Usuarios(Cedula,Email,Clave) VALUES (?,?, ?)";
     
